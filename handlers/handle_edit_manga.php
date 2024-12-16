@@ -13,10 +13,11 @@ if (!is_admin()) {
 $title = trim($_POST['title'] ?? '');
 $price = trim($_POST['price'] ?? '');
 $author = trim($_POST['author'] ?? '');
+$genre = trim($_POST['genre'] ?? ''); // Keep genre as a string
 $description = trim($_POST['description'] ?? '');
 $manga_id = intval($_POST['id'] ?? 0);
 
-if (mb_strlen($title) == 0 || mb_strlen($price) == 0 || mb_strlen($author) == 0 || mb_strlen($description) == 0 || $manga_id <= 0) {
+if (mb_strlen($title) == 0 || mb_strlen($price) == 0 || mb_strlen($author) == 0 || mb_strlen($description) == 0 || mb_strlen($genre) == 0 || $manga_id <= 0) {
     $_SESSION['flash']['message']['type'] = 'danger';
     $_SESSION['flash']['message']['text'] = 'Моля попълнете всички полета!';
     header('Location: ../index.php?page=edit_manga&id=' . $manga_id);
@@ -46,13 +47,13 @@ $query = '';
 if ($img_uploaded) {
     $query = "
         UPDATE mangas
-        SET title = :title, price = :price, author = :author, description = :description, image = :image
+        SET title = :title, price = :price, author = :author, description = :description, image = :image, genre = :genre
         WHERE id = :id
     ";
 } else {
     $query = "
         UPDATE mangas
-        SET title = :title, price = :price, author = :author, description = :description
+        SET title = :title, price = :price, author = :author, description = :description, genre = :genre
         WHERE id = :id
     ";
 }
@@ -63,6 +64,7 @@ $params = [
     ':price' => $price,
     ':author' => $author,
     ':description' => $description,
+    ':genre' => $genre,
     ':id' => $manga_id
 ];
 
