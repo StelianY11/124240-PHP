@@ -5,14 +5,16 @@ CREATE TABLE `favorite_mangas_users` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 CREATE TABLE `mangas` (
-  `id` int(11) NOT NULL COMMENT 'Primary Key' AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `title` varchar(255) NOT NULL,        -- Manga title
   `author` varchar(255) NOT NULL,       -- Manga author
   `genre` varchar(255) NOT NULL,        -- Manga genre
   `description` text NOT NULL,          -- Manga description
   `image` varchar(255) NOT NULL,        -- Manga cover image
-  `price` decimal(10,2) NOT NULL        -- Manga price
+  `price` decimal(10,2) NOT NULL,       -- Manga price
+  PRIMARY KEY (`id`)                    -- Define `id` as the primary key
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 INSERT INTO `mangas` (`id`, `title`, `author`, `genre`, `description`, `image`, `price`) VALUES
 (1, 'Naruto', 'Masashi Kishimoto', 'Action, Adventure', 'A young ninja embarks on an adventure to gain recognition and become the greatest ninja.', '1734346380_naruto.webp', '15.99'),
@@ -32,5 +34,6 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `names`, `email`, `password`) VALUES
 (6, 'Симеон', 'simeon@abv.bg', '$argon2i$v=19$m=65536,t=4,p=1$QndnNTB3b0RmdUhTV2VVZQ$QfKHIMfaObI+KUoAMDhyxVKnxTQ3QvMBD+YYvy3Niks'),
 (7, 'Sимеон2', 'simeon2@abv.bg', '$argon2i$v=19$m=65536,t=4,p=1$VmF4OGYzQjNWb0pOSU43bw$YUvVoKEoa5ibI9p0BG90ZYIWo38E26MewdZ3t8owjJM');
-ALTER TABLE users
-ADD COLUMN is_admin ENUM('user', 'admin') NOT NULL DEFAULT 'user';
+
+ALTER TABLE users;
+ADD COLUMN is_admin ENUM('1', '2') NOT NULL;
