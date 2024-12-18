@@ -16,6 +16,7 @@ CREATE TABLE `mangas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
+
 INSERT INTO `mangas` (`id`, `title`, `author`, `genre`, `description`, `image`, `price`) VALUES
 (1, 'Naruto', 'Masashi Kishimoto', 'Action, Adventure', 'A young ninja embarks on an adventure to gain recognition and become the greatest ninja.', '1734346380_naruto.webp', '15.99'),
 (2, 'One Piece', 'Eiichiro Oda', 'Action, Adventure', 'A young pirate aims to become the Pirate King in a world filled with pirates and treasures.', '1734346524_op.jpg', '19.99'),
