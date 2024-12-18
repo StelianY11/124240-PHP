@@ -1,7 +1,4 @@
-CREATE DATABASE mangas;
-CREATE USER 'manga_user'@'localhost' IDENTIFIED BY '123456';
-GRANT ALL PRIVILEGES ON mangas.* TO 'manga_user'@'localhost';
-FLUSH PRIVILEGES;
+
 CREATE TABLE `favorite_mangas_users` (
   `id` int(11) NOT NULL,
   `manga_id` int(11) NOT NULL,    
